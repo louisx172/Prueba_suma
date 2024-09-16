@@ -131,7 +131,7 @@ def create_animation(frames, output_file='bucket_sort_animation.html'):
 
     fig.update_yaxes(range=[0, max_val * 1.1])  # Ajustar el eje Y en función del valor máximo
 
-    html_content = pio.to_html(fig, auto_open=False)  # Obtener el contenido HTML como cadena
+    html_content = pio.to_html(fig)  # Obtener el contenido HTML como cadena
     print(html_content)  # Mostrar el contenido HTML en lugar de guardarlo
 
 # Crear un arreglo aleatorio y ejecutar el algoritmo

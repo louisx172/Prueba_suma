@@ -1,0 +1,14 @@
+{
+    "Suma": {
+      "title": "Suma",
+      "description": "Bucketsort es un algoritmo de ordenamiento que distribuye los elementos en 'buckets' o cubetas antes de ordenarlos."
+    },
+    "bucketsort": {
+      "title": "Bucketsort",
+      "description": "Bucketsort es un algoritmo de ordenamiento que distribuye los elementos en 'buckets' o cubetas antes de ordenarlos."
+    },
+    "heapsort": {
+      "title": "Heapsort",
+      "description": "Heapsort es un algoritmo basado en un heap binario para ordenar elementos."
+    }
+}

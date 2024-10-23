@@ -121,15 +121,19 @@ def create_animation(frames):
 
     return fig
 
-# Generar un arreglo usando np.random.permutation
-arr = np.random.permutation(100)[:9]  # Genera una permutación de 0 a 99 y toma los primeros 9 elementos
-frames = bucket_sort_with_animation(arr, num_buckets=5)
-animation_figure = create_animation(frames)
+def main():
+    # Generar un arreglo usando np.random.permutation
+    arr = np.random.permutation(100)[:9]  # Genera una permutación de 0 a 99 y toma los primeros 9 elementos
+    frames = bucket_sort_with_animation(arr, num_buckets=5)
+    animation_figure = create_animation(frames)
 
-# Convertir la figura a una cadena HTML y guardarla en una variable
-html_content = pio.to_html(animation_figure, include_plotlyjs=True, full_html=True)
+    # Convertir la figura a una cadena HTML y guardarla en una variable
+    html_content = pio.to_html(animation_figure, include_plotlyjs=True, full_html=True)
+    
+    # Devolver el contenido HTML
+    return html_content
 
-print("El contenido HTML se ha generado y guardado en la variable 'html_content'")
-print("Longitud del contenido HTML:", len(html_content))
-print("Primeros 500 caracteres del HTML:")
-print(html_content[:500])
+# Si el script es ejecutado, invoca la función main
+if __name__ == "__main__":
+    html_content = main()
+    print(html_content)

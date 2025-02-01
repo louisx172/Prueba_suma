@@ -104,14 +104,23 @@ def create_animation(frames, output_file='heap_sort_animation.html'):
     return frames[0]['arr'], frames[-1]['arr']
 
 def main():
-    # Generar array aleatorio de 10 elementos
-    arr = np.random.randint(1, 100, 10)
+    # Obtener el tamaño del array desde los argumentos
+    size = 10  # valor por defecto
+    if len(sys.argv) > 1 and sys.argv[1]:
+        try:
+            size = int(sys.argv[1])
+            # Limitar el tamaño para evitar problemas de rendimiento
+            size = min(max(size, 5), 50)  # Entre 5 y 50 elementos
+        except ValueError:
+            print("Error: El argumento debe ser un número entre 5 y 50")
+            return
+
+    # Generar y ordenar el array
+    arr = generate_random_array(size=size)
+    print(f"Array original: {arr.tolist()}")
     frames = heap_sort_with_animation(arr)
-    initial_arr, sorted_arr = create_animation(frames)
-    return {
-        'initial_array': initial_arr.tolist(),
-        'sorted_array': sorted_arr.tolist()
-    }
+    create_animation(frames)
+    print(f"Array ordenado: {arr.tolist()}")
 
 if __name__ == "__main__":
     main()

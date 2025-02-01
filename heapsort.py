@@ -76,16 +76,11 @@ def create_animation(frames, output_file='heap_sort_animation.html'):
             hoverinfo='text'
         )
 
-    # Agregar el primer frame
     fig.add_trace(create_bar_trace(frames[0]))
-
-    # Crear los frames para la animación
     fig_frames = [go.Frame(data=[create_bar_trace(frame)], name=str(i)) 
                   for i, frame in enumerate(frames)]
-
     fig.frames = fig_frames
 
-    # Configurar el diseño y los controles de animación
     fig.update_layout(
         title='Animación de Heap Sort',
         updatemenus=[dict(
@@ -103,36 +98,20 @@ def create_animation(frames, output_file='heap_sort_animation.html'):
     fig.update_xaxes(title_text='Índice')
     fig.update_yaxes(range=[0, max_val * 1.1], title_text='Valor')
 
-    # Exportar la figura a un archivo HTML sin auto_play
     pio.write_html(fig, file=output_file, auto_open=False, auto_play=False)
-    print(f"La animación ha sido guardada en {output_file}")
-
-def generate_random_array(size=10):
-    return np.random.randint(1, 100, size)
-
-# Generar un arreglo aleatorio
-arr = generate_random_array(size=10)
-print(f"Array generado: {arr}")
-frames = heap_sort_with_animation(arr)
-create_animation(frames)
-
+    print(f"Array inicial: {frames[0]['arr']}")
+    print(f"Array ordenado: {frames[-1]['arr']}")
+    return frames[0]['arr'], frames[-1]['arr']
 
 def main():
-    # Obtener argumentos de la línea de comandos
-    size = 10  # Tamaño por defecto
-    if len(sys.argv) > 1 and sys.argv[1]:
-        try:
-            size = int(sys.argv[1])
-        except ValueError:
-            print("El primer argumento debe ser un número entero")
-            return
-
-    # Generar array aleatorio del tamaño especificado
-    arr = generate_random_array(size=size)
-    print(f"Array generado: {arr}")
+    # Generar array aleatorio de 10 elementos
+    arr = np.random.randint(1, 100, 10)
     frames = heap_sort_with_animation(arr)
-    create_animation(frames)
-    print(f"Array ordenado: {arr}")
+    initial_arr, sorted_arr = create_animation(frames)
+    return {
+        'initial_array': initial_arr.tolist(),
+        'sorted_array': sorted_arr.tolist()
+    }
 
 if __name__ == "__main__":
     main()

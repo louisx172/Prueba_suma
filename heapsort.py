@@ -45,7 +45,7 @@ def heap_sort_with_animation(arr):
 
     return frames
 
-def create_animation(frames, output_file='heap_sort_animation.html'):
+def create_animation(frames, output_file):
     fig = go.Figure()
 
     max_val = max(max(frame['arr']) for frame in frames)
@@ -119,7 +119,10 @@ def main():
     arr = generate_random_array(size=size)
     print(f"Array original: {arr.tolist()}")
     frames = heap_sort_with_animation(arr)
-    create_animation(frames)
+    import sys
+    output_file = sys.argv[2] if len(sys.argv) > 2 else 'heap_sort_animation.html'
+    create_animation(frames, output_file)
+
     print(f"Array ordenado: {arr.tolist()}")
 
 if __name__ == "__main__":

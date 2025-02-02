@@ -104,6 +104,7 @@ def create_animation(frames, output_file):
     return frames[0]['arr'], frames[-1]['arr']
 
 def main():
+    print("Argumentos recibidos:", sys.argv)
     # Obtener el tamaño del array desde los argumentos
     size = 10  # valor por defecto
     if len(sys.argv) > 1 and sys.argv[1]:

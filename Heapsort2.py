@@ -71,3 +71,10 @@ if __name__ == "__main__":
     animation_data = generate_animation_data(frames)
     
     print(animation_data)  # Imprime los datos en formato JSON para que el servidor los capture
+
+print(json.dumps({
+    "frames": [
+        {"x": [0,1,2], "y": [3,1,2], "colors": ["red", "blue", "green"]},
+        # ... más frames
+    ]
+}))
